@@ -1,7 +1,7 @@
 
 
 resource "azurerm_resource_group" "state_rg" {
-  name     = local.state_resourcegroupname
+  name     = "${var.account_name}-${local.state_resourcegroupname}"
   location = var.location
   tags = {
     environment = var.environment
@@ -9,11 +9,15 @@ resource "azurerm_resource_group" "state_rg" {
 }
 
 resource "azurerm_storage_account" "remotestatestorage" {
-  name                     = "${var.account_name}statestorage${var.environment}"
-  resource_group_name      = azurerm_resource_group.state_rg.name
-  location                 = azurerm_resource_group.state_rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  name                            = "${var.account_name}statestorage${var.environment}"
+  resource_group_name             = azurerm_resource_group.state_rg.name
+  location                        = azurerm_resource_group.state_rg.location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
+  https_traffic_only_enabled      = true
+  allow_nested_items_to_be_public = false
+  public_network_access_enabled   = false
+  min_tls_version                 = "TLS1_2"
   # account_replication_type = "GRS"
   tags = {
     environment = var.environment
