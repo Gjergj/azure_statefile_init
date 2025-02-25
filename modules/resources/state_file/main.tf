@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "state_rg" {
 }
 
 resource "azurerm_storage_account" "remotestatestorage" {
-  name                            = "${var.account_name}statestorage${var.environment}"
+  name                            = "${var.account_name}state${var.environment}"
   resource_group_name             = azurerm_resource_group.state_rg.name
   location                        = azurerm_resource_group.state_rg.location
   account_tier                    = "Standard"
