@@ -1,7 +1,7 @@
 
 
 resource "azurerm_resource_group" "state_rg" {
-  name     = "${var.account_name}-${local.state_resourcegroupname}"
+  name     = local.state_resourcegroupname
   location = var.location
   tags = {
     environment = var.environment
@@ -34,8 +34,8 @@ data "azurerm_storage_account_sas" "storage-sas" {
   connection_string = azurerm_storage_account.remotestatestorage.primary_connection_string
   https_only        = true
 
-  start  = "2020-12-25"
-  expiry = "2031-10-20"
+  start  = "2024-12-25"
+  expiry = "2025-03-20"
 
   services {
     blob  = true

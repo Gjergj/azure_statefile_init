@@ -8,8 +8,9 @@ provider "azurerm" {
 }
 
 module "state_file" {
-  source       = "./modules/resources/state_file"
-  environment  = var.environment
-  location     = var.location
-  account_name = var.account_name
+  source          = "./modules/resources/state_file"
+  environment     = var.environment
+  location        = var.location
+  account_name    = var.account_name
+  subscription_id = var.subscription_id
 }

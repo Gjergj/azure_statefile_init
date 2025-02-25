@@ -1,5 +1,5 @@
 
 
 locals {
-  state_resourcegroupname = "rg-state-${var.environment}"
+  state_resourcegroupname = "rgstate${var.environment}"
 }

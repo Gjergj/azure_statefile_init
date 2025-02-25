@@ -9,3 +9,7 @@ variable "location" {
 variable "account_name" {
   type = string
 }
+
+variable "subscription_id" {
+  type = string
+}
